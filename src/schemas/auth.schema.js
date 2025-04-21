@@ -9,14 +9,14 @@ export const registerSchema = z.object({
       required_error: "Email is required",
     })
     .email({
-      message: "Invalid email",
+      message: "Correo electrónico no válido",
     }),
   password: z
     .string({
       required_error: "Password is required",
     })
     .min(6, {
-      message: "Password must be at least 6 characters long",
+      message: "La contraseña debe tener al menos 6 caracteres",
     }),
 });
 
@@ -26,13 +26,13 @@ export const loginSchema = z.object({
       required_error: "Email is required",
     })
     .email({
-      message: "Invalid email",
+      message: "Correo electrónico no válido",
     }),
   password: z
     .string({
       required_error: "Password is required",
     })
     .min(6, {
-      message: "Password must be at least 6 characters long",
+      message: "La contraseña debe tener al menos 6 caracteres",
     }),
 });
