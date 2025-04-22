@@ -39,7 +39,7 @@ function LoginPage() {
             ✓
           </div>
           <h1 className="ml-3 text-white text-3xl font-semibold tracking-wide">
-            TidyTasks
+            Iniciar sesión
           </h1>
         </div>
 
@@ -76,7 +76,7 @@ function LoginPage() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
           >
-            Iniciar sesión
+            Ingresar
           </motion.button>
         </form>
         <p className="flex gap-x-2 justify-center ">
