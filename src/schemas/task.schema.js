@@ -1,4 +1,4 @@
-import {z} from 'zod';
+import { z } from 'zod';
 
 export const taskSchema = z.object({
     title: z.string({
@@ -7,5 +7,9 @@ export const taskSchema = z.object({
     description: z.string({
         required_error: 'Description must be a string',
     }),
-    date: z.string().datetime().optional(),
-})
+    dueDate: z.string().datetime({
+        message: "La fecha debe estar en formato ISO válido (yyyy-mm-ddTHH:mm:ssZ)",
+    }).optional(), 
+
+    completed: z.boolean().optional(), 
+});

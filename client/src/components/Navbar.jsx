@@ -38,9 +38,12 @@ function Navbar() {
             <>
               <li className="text-sm text-zinc-300">
                 Bienvenido,{" "}
-                <span className="text-white font-semibold">
+                <Link
+                  to="/profile"  // Link al perfil del usuario
+                  className="text-white font-semibold hover:text-indigo-400 transition-colors"
+                >
                   {user.username}
-                </span>
+                </Link>
               </li>
               <li>
                 <button
