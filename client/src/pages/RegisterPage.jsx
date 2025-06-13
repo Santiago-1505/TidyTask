@@ -1,25 +1,41 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { HiEye, HiEyeOff } from "react-icons/hi";
 
 function RegisterPage() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
   const { signUp, isAuthenticated, errors: registerErrors } = useAuth();
   const navigate = useNavigate();
+  const [localError, setLocalError] = useState("");
+
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   useEffect(() => {
     if (isAuthenticated) navigate("/tasks");
   }, [isAuthenticated]);
 
   const onSubmit = handleSubmit(async (values) => {
-    signUp(values);
+    if (values.password !== values.confirmPassword) {
+      setLocalError("Las contraseñas no coinciden");
+      return;
+    }
+    setLocalError("");
+
+    const { username, email, password } = values;
+    signUp({ username, email, password });
   });
 
   useEffect(() => {
@@ -54,6 +70,12 @@ function RegisterPage() {
           </div>
         ))}
 
+        {localError && (
+          <div className="bg-red-600 text-white p-3 rounded-md my-2 text-sm">
+            {localError}
+          </div>
+        )}
+
         <form onSubmit={onSubmit} className="space-y-4">
           <motion.input
             type="text"
@@ -81,16 +103,51 @@ function RegisterPage() {
             </p>
           )}
 
-          <motion.input
-            type="password"
-            {...register("password", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
-            placeholder="Contraseña"
-            whileFocus={{ scale: 1.02 }}
-          />
+          <div className="relative">
+            <motion.input
+              type={showPassword ? "text" : "password"}
+              {...register("password", { required: true })}
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+              placeholder="Contraseña"
+              whileFocus={{ scale: 1.02 }}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-indigo-400 hover:text-indigo-300"
+            >
+              {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />}
+            </button>
+          </div>
           {errors.password && (
             <p className="bg-red-600 text-white px-3 py-1 rounded-md text-sm">
               La contraseña es requerida
+            </p>
+          )}
+
+          <div className="relative">
+            <motion.input
+              type={showConfirmPassword ? "text" : "password"}
+              {...register("confirmPassword", { required: true })}
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+              placeholder="Confirmar contraseña"
+              whileFocus={{ scale: 1.02 }}
+            />
+            <button
+              type="button"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-indigo-400 hover:text-indigo-300"
+            >
+              {showConfirmPassword ? (
+                <HiEyeOff size={20} />
+              ) : (
+                <HiEye size={20} />
+              )}
+            </button>
+          </div>
+          {errors.confirmPassword && (
+            <p className="bg-red-600 text-white px-3 py-1 rounded-md text-sm">
+              La confirmación de la contraseña es requerida
             </p>
           )}
 
