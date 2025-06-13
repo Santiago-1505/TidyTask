@@ -40,7 +40,7 @@ function Navbar() {
               <li className="text-sm text-zinc-300">
                 Bienvenido,{" "}
                 <Link
-                  to="/profile"  // Link al perfil del usuario
+                  to="/profile"  
                   className="text-white font-semibold hover:text-indigo-400 transition-colors"
                 >
                   {user.username}

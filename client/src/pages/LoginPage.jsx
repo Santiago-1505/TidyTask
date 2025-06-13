@@ -2,7 +2,8 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { HiEye, HiEyeOff } from "react-icons/hi";
 
 function LoginPage() {
   const {
@@ -13,6 +14,7 @@ function LoginPage() {
 
   const { signIn, errors: signInErrors, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const onSubmit = handleSubmit((data) => {
     signIn(data);
@@ -65,13 +67,23 @@ function LoginPage() {
             </p>
           )}
 
-          <motion.input
-            type="password"
-            {...register("password", { required: true })}
-            className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
-            placeholder="Contraseña"
-            whileFocus={{ scale: 1.02 }}
-          />
+          <div className="relative">
+            <motion.input
+              type={showPassword ? "text" : "password"}
+              {...register("password", { required: true })}
+              className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+              placeholder="Contraseña"
+              whileFocus={{ scale: 1.02 }}
+            />
+            <button
+              type="button"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-zinc-400 hover:text-white"
+              onClick={() => setShowPassword(!showPassword)}
+              tabIndex={-1}
+            >
+              {showPassword ? <HiEyeOff size={20} /> : <HiEye size={20} />}
+            </button>
+          </div>
           {errors.password && (
             <p className="bg-red-600 text-white px-3 py-1 rounded-md text-sm">
               La contraseña es requerida
