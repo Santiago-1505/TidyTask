@@ -8,7 +8,7 @@ function HomePage() {
 
   useEffect(() => {
     getTasks();
-  }, [getTasks]);
+  }, []);
 
   const pendingTasks = tasks.filter((task) => !task.completed);
   const completedTasks = tasks.filter((task) => task.completed);

@@ -21,25 +21,26 @@ function Navbar() {
           </div>
         </Link>
         <ul className="flex gap-4 text-white font-medium items-center">
-          <li>
-            <Link
-              to="/tasks"
-              className="hover:text-indigo-400 transition-colors"
-            >
-              Tareas
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/add-task"
-              className="hover:text-indigo-400 transition-colors"
-            >
-              Nueva tarea
-            </Link>
-          </li>
+          
 
           {isAuthenticated ? (
             <>
+              <li>
+                <Link
+                  to="/tasks"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Tareas
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/add-task"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Nueva tarea
+                </Link>
+              </li>
               <li className="text-sm text-zinc-300">
                 Bienvenido,{" "}
                 <Link
