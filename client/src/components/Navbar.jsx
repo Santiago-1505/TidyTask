@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import { CheckCircle, Star, Users, Zap } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 
 function Navbar() {
@@ -14,7 +15,10 @@ function Navbar() {
     <nav className="bg-zinc-800 p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="text-white text-2xl font-bold">
-          TidyTasks
+          <div className="flex items-center space-x-2">
+            <CheckCircle className="h-8 w-8 text-indigo-600" />
+            <span className="text-xl center-bold text-white ">TidyTask</span>
+          </div>
         </Link>
         <ul className="flex gap-4 text-white font-medium items-center">
           <li>
@@ -39,7 +43,7 @@ function Navbar() {
               <li className="text-sm text-zinc-300">
                 Bienvenido,{" "}
                 <Link
-                  to="/profile"  // Link al perfil del usuario
+                  to="/profile" // Link al perfil del usuario
                   className="text-white font-semibold hover:text-indigo-400 transition-colors"
                 >
                   {user.username}
