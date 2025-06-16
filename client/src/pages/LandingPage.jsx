@@ -1,4 +1,5 @@
 import { CheckCircle, Star, Users, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function LandingPage() {
   return (
@@ -30,9 +31,11 @@ export default function LandingPage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <button className="text-lg px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl">
-                Comenzar Gratis
-              </button>
+              <Link to="/homePage">
+                <button className="text-lg px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl">
+                  Comenzar Gratis
+                </button>
+              </Link>
               <button className="text-lg px-8 py-4 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 rounded-lg font-semibold transition-colors">
                 Ver Demo
               </button>

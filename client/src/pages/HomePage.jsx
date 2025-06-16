@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 function HomePage() {
   const { tasks, getTasks } = useTasks();
+  const MotionDiv = motion.div;
 
   useEffect(() => {
     getTasks();
@@ -15,7 +16,7 @@ function HomePage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-700 p-6">
-      <motion.div
+      <MotionDiv
         className="bg-zinc-800 w-full max-w-2xl p-10 rounded-xl shadow-2xl space-y-6"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -23,8 +24,12 @@ function HomePage() {
       >
         {/* Título y descripción */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-white">¡Bienvenido a TidyTasks!</h1>
-          <p className="text-zinc-300 mt-2">Gestiona tus tareas de forma fácil y eficiente</p>
+          <h1 className="text-3xl font-bold text-white">
+            ¡Bienvenido a TidyTasks!
+          </h1>
+          <p className="text-zinc-300 mt-2">
+            Gestiona tus tareas de forma fácil y eficiente
+          </p>
         </div>
 
         {/* Resumen de tareas */}
@@ -54,7 +59,7 @@ function HomePage() {
             Ver todas las tareas
           </Link>
         </div>
-      </motion.div>
+      </MotionDiv>
     </div>
   );
 }
