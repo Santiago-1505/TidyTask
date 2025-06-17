@@ -40,7 +40,7 @@ function RegisterPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/tasks");
+      navigate("/homepage");
     }
   }, [isAuthenticated]);
 

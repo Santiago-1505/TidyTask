@@ -13,27 +13,27 @@ import { registerSchema, loginSchema } from "../schemas/auth.schema.js";
 const router = Router();
 
 /**
- * @swagger
- * /api/register:
- *   post:
- *     summary: Registrar un nuevo usuario
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               username:
- *                 type: string
- *               email:
- *                 type: string
- *               password:
- *                 type: string
- *     responses:
- *       201:
- *         description: Usuario registrado exitosamente
- */
+* @swagger
+*  /api/register:
+*    post:
+*      summary: Registrar un nuevo usuario
+*      requestBody:
+*        required: true
+*        content:
+*          application/json:
+*            schema:
+*              type: object
+*              properties:
+*                username:
+*                  type: string
+*                email:
+*                  type: string
+*                password:
+*                  type: string
+*      responses:
+*        201:
+*          description: Usuario registrado exitosamente
+*/
 router.post("/register", validateSchema(registerSchema), register);
 
 /**

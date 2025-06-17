@@ -27,6 +27,14 @@ function Navbar() {
             <>
               <li>
                 <Link
+                  to="/homepage"
+                  className="hover:text-indigo-400 transition-colors"
+                >
+                  Inicio
+                </Link>
+              </li>  
+              <li>
+                <Link
                   to="/tasks"
                   className="hover:text-indigo-400 transition-colors"
                 >

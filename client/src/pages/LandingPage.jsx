@@ -31,14 +31,11 @@ export default function LandingPage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Link to="/homePage">
+              <Link to="/register">
                 <button className="text-lg px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg font-semibold transition-colors shadow-lg hover:shadow-xl">
                   Comenzar Gratis
                 </button>
-              </Link>
-              <button className="text-lg px-8 py-4 border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 rounded-lg font-semibold transition-colors">
-                Ver Demo
-              </button>
+              </Link>  
             </div>
 
             {/* Stats */}
@@ -151,13 +148,12 @@ export default function LandingPage() {
                 placeholder="Tu email"
                 className="flex-1 px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-white/50"
               />
+              <Link to="/register">
               <button className="px-6 py-3 bg-white text-indigo-600 hover:bg-gray-100 rounded-lg font-semibold transition-colors">
                 Empezar
               </button>
+              </Link>
             </div>
-            <p className="text-sm text-indigo-200 mt-2">
-              Gratis por 14 días. No se requiere tarjeta de crédito.
-            </p>
           </div>
         </div>
       </section>
@@ -192,7 +188,7 @@ export default function LandingPage() {
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 TaskMaster. Todos los derechos reservados.</p>
+            <p>&copy; 2025 TidyTask. Todos los derechos reservados.</p>
           </div>
         </div>
       </footer>
